@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JAYHUNCHO — Official</title>
+  <meta name="description" content="Official website of Jayhuncho — music, merch, tour dates and more." />
+  <!-- Basic CSP: only load resources from trusted origins -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 script-src 'self' 'unsafe-inline';
+                 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+                 font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+                 img-src 'self' data: https://is1-ssl.mzstatic.com;
+                 connect-src 'none';" />
+
+  <!-- ============================================================
+    JAYHUNCHO WEBSITE — PLACEHOLDER REFERENCE
+    Ctrl+F for the bracketed tags below to find each spot quickly
+  ==============================================================
+
+  ── IMAGES ───────────────────────────────────────────────────────
+  [HERO_BG]          Hero section — add a background photo:
+                     In CSS, find ".hero-bg" and set background-image: url('your-photo.jpg')
+
+  [LATEST_COVER]     Latest release cover art — replace the .cover-art-placeholder div
+                     with: <img src="your-cover.jpg" alt="Release title" style="width:100%;height:100%;object-fit:cover;">
+
+  [DISCOG_COVER_1–4] Four discography items — same swap as above for each .discog-cover
+
+  [ABOUT_PHOTO]      Bio photo — replace .about-photo div content with your <img>
+
+  [MERCH_IMG_1–6]    Six merch product images — replace each .merch-image div content
+
+  [PRESS_PHOTO_1–5]  Five press photos — replace each .press-photo div content
+
+  [GALLERY_1–7]      Seven gallery photos — replace each .gallery-item div content
+
+  ── STREAMING LINKS ──────────────────────────────────────────────
+  [SPOTIFY_LINK]           href="https://open.spotify.com/artist/54KJmDwDjz0UCKPDVpsS41"
+  [APPLE_MUSIC_LINK]       href="https://music.apple.com/us/artist/jayhuncho/1753731818"
+  [YOUTUBE_MUSIC_LINK]     href="https://on.soundcloud.com/Vu32jU7iy3WUyrn2nI"
+  [SOUNDCLOUD_LINK]        href="https://on.soundcloud.com/Vu32jU7iy3WUyrn2nI"
+  [TIDAL_LINK]             href="https://on.soundcloud.com/Vu32jU7iy3WUyrn2nI"
+  [AMAZON_MUSIC_LINK]      href="https://on.soundcloud.com/Vu32jU7iy3WUyrn2nI"
+  (These appear multiple times — in Latest Release AND each discography item)
+
+  ── YOUTUBE VIDEOS ───────────────────────────────────────────────
+  [VIDEO_ID_1]       src="https://www.youtube.com/embed/VIDEO_ID_1"
+  [VIDEO_ID_2]       src="https://www.youtube.com/embed/VIDEO_ID_2"
+  [VIDEO_ID_3]       src="https://www.youtube.com/embed/VIDEO_ID_3"
+  Also update video titles in each .video-title span
+
+  ── MERCH ────────────────────────────────────────────────────────
+  [MERCH_STORE_URL]  All "Shop Now" buttons — replace href="#MERCH_STORE_URL"
+  [MERCH_PRICE_1–6]  Replace "$--" with real prices
+  Also update item names and categories in .merch-name / .merch-category
+
+  ── SHOWS ────────────────────────────────────────────────────────
+  When you have real dates:
+  1. Delete the entire .no-shows div
+  2. Uncomment the sample .show-item rows and fill in real info
+
+  ── SOCIAL MEDIA ─────────────────────────────────────────────────
+  [INSTAGRAM_LINK]   href="https://www.instagram.com/jayhxnchooo"
+  [TWITTER_LINK]     href="#TWITTER_LINK"
+  [TIKTOK_LINK]      href="https://www.tiktok.com/@jayhunchooo"
+  [YOUTUBE_LINK]     href="#YOUTUBE_LINK"
+  [FACEBOOK_LINK]    href="#FACEBOOK_LINK"
+
+  ── CONTACT ──────────────────────────────────────────────────────
+  [BOOKING_EMAIL]    Replace "bookings@jayhuncho.com" with your real email
+  [FORM_ENDPOINT]    Replace action="#FORM_ENDPOINT" on the contact form
+                     (Use Formspree.io or Netlify Forms — both are free)
+
+  ── TEXT ─────────────────────────────────────────────────────────
+  [LATEST_TITLE]     "SINGLE TITLE" in the Latest Release section
+  [LATEST_TYPE]      "SINGLE · 2025" — change to EP / Album / etc.
+  [BIO_CITY]         "[CITY]" in the bio paragraphs
+  [DISCOG_TITLES]    Each release name in the discography grid
+  [STATS]            Three numbers in the About section (streams, followers, etc.)
+
+  ── PRESS KIT ────────────────────────────────────────────────────
+  [PRESS_KIT_URL]    Replace href="#PRESS_KIT_URL" with your press kit PDF link
+
+  ============================================================ -->
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome icons (SRI hash locks this to the exact known file) -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
+
+  <style>
+    /* ── RESET & BASE ─────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    :root {
+      --bg:         #000000;
+      --bg2:        #080808;
+      --bg3:        #0f0f0f;
+      --gold:       #d0d0d0;
+      --gold-dim:   rgba(210,210,210,.1);
+      --gold-line:  rgba(210,210,210,.22);
+      --white:      #ffffff;
+      --grey1:      #cccccc;
+      --grey2:      #777777;
+      --grey3:      #3a3a3a;
+      --chrome-hi:  #f0f0f0;
+      --chrome-mid: #b0b0b0;
+      --chrome-lo:  #707070;
+      --display:    'Orbitron', sans-serif;
+      --heading:    'Orbitron', sans-serif;
+      --body:       'Exo 2', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--body);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a   { color: inherit; text-decoration: none; }
+    ul  { list-style: none; }
+
+    /* ── UTILITIES ────────────────────────────────────── */
+    .label {
+      display: block;
+      font-family: var(--heading);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #f0f0f0, #888, #f0f0f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: .5rem;
+    }
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(1.6rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: 2px;
+      line-height: 1.1;
+    }
+    .divider {
+      width: 50px;
+      height: 2px;
+      background: var(--gold);
+      margin-top: .9rem;
+    }
+    .section-header { margin-bottom: 3rem; }
+
+    .btn {
+      display: inline-block;
+      padding: .85rem 2.8rem;
+      font-family: var(--heading);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: all .25s;
+    }
+    .btn-gold  {
+      background: linear-gradient(135deg, #f0f0f0 0%, #9a9a9a 45%, #d8d8d8 100%);
+      color: #000;
+      border: none;
+    }
+    .btn-gold:hover {
+      background: linear-gradient(135deg, #ffffff 0%, #c0c0c0 50%, #ffffff 100%);
+      transform: translateY(-2px);
+    }
+    .btn-outline { background: transparent; color: var(--chrome-hi); border: 1px solid var(--gold); }
+    .btn-outline:hover {
+      background: linear-gradient(135deg, #f0f0f0 0%, #9a9a9a 45%, #d8d8d8 100%);
+      color: #000;
+      border-color: transparent;
+    }
+    .btn-sm { padding: .6rem 1.6rem; font-size: .72rem; }
+
+    /* placeholder image tiles */
+    .ph {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: .6rem;
+      background: linear-gradient(145deg, #1a1a1a, #111);
+      border: 1px dashed rgba(212,175,55,.18);
+    }
+    .ph i   { font-size: 2rem; color: var(--gold); opacity: .22; }
+    .ph span {
+      font-family: var(--heading);
+      font-size: .65rem;
+      letter-spacing: 3px;
+      color: var(--grey3);
+      text-transform: uppercase;
+    }
+
+    /* ── NAV ──────────────────────────────────────────── */
+    #nav {
+      position: fixed; inset: 0 0 auto 0;
+      z-index: 1000;
+      height: 68px;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      background: rgba(8,8,8,.85);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--gold-dim);
+      transition: background .3s;
+    }
+    #nav.scrolled { background: rgba(5,5,5,.97); }
+
+    .nav-logo {
+      font-family: var(--display);
+      font-size: 1.1rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #f0f0f0 0%, #707070 50%, #f0f0f0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex; gap: 2.2rem;
+    }
+    .nav-links a {
+      font-family: var(--heading);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--grey2);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* hamburger */
+    .hamburger {
+      display: none; flex-direction: column;
+      gap: 5px; cursor: pointer; padding: 4px; z-index: 1001;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--white);
+      transition: all .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* mobile menu */
+    #mobile-menu {
+      display: none;
+      position: fixed; inset: 68px 0 0 0;
+      background: rgba(5,5,5,.98);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 2.5rem;
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu a {
+      font-family: var(--display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--grey2);
+      transition: color .2s;
+    }
+    #mobile-menu a:hover { color: var(--gold); }
+
+    /* ── HERO ─────────────────────────────────────────── */
+    #hero {
+      height: 100vh; min-height: 620px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+
+    /* [HERO_BG] — replace this gradient with a real photo:
+       .hero-bg { background-image: url('your-photo.jpg'); background-size: cover; background-position: center top; }
+       Then remove the radial-gradient lines below and keep the ::after overlay. */
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%,  rgba(220,220,220,.06) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 10% 100%, rgba(180,180,180,.04) 0%, transparent 55%),
+        linear-gradient(180deg, #000000 0%, #080808 50%, #000000 100%);
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      /* subtle noise texture */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    /* decorative horizontal lines */
+    .hero-line {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: .18;
+      pointer-events: none;
+    }
+    .hero-line-1 { width: 55%; top: 28%; left: 22%; }
+    .hero-line-2 { width: 35%; bottom: 32%; left: 33%; }
+
+    .hero-content {
+      position: relative; z-index: 1;
+      padding: 0 1rem;
+      animation: heroFadeIn .9s ease both;
+    }
+    @keyframes heroFadeIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      font-family: var(--heading);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #f0f0f0, #888, #f0f0f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .hero-name {
+      font-family: var(--display);
+      font-size: clamp(2.8rem, 10vw, 9rem);
+      font-weight: 900;
+      letter-spacing: 4px;
+      line-height: .95;
+      color: var(--white);
+      text-shadow: 0 0 80px rgba(255,255,255,.08), 0 0 200px rgba(200,200,200,.05);
+    }
+
+    .hero-tagline {
+      font-family: var(--heading);
+      font-size: .95rem;
+      font-weight: 300;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--grey2);
+      margin: 1.6rem 0 2.8rem;
+    }
+
+    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column;
+      align-items: center; gap: .5rem;
+      font-family: var(--heading);
+      font-size: .65rem;
+      letter-spacing: 3px;
+      color: var(--grey3);
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    .hero-scroll i { font-size: .7rem; }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── LATEST RELEASE ───────────────────────────────── */
+    #latest {
+      background: var(--bg2);
+      padding: 7rem 2rem;
+    }
+    .latest-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.2fr;
+      gap: 5rem; align-items: center;
+    }
+
+    .cover-art-wrap {
+      position: relative;
+      /* [LATEST_COVER] — replace .ph div inside this with <img src="cover.jpg"> */
+    }
+    .cover-art-wrap::before {
+      content: '';
+      position: absolute; inset: -12px; left: -12px; bottom: -12px;
+      border: 1px solid var(--gold-line);
+      pointer-events: none; z-index: 0;
+    }
+    .cover-art-wrap .ph-wrap {
+      position: relative; z-index: 1;
+      aspect-ratio: 1; overflow: hidden;
+    }
+
+    .latest-tag {
+      display: inline-block;
+      font-family: var(--heading);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-line);
+      padding: .3rem .9rem;
+      margin-bottom: 1rem;
+    }
+
+    /* [LATEST_TITLE] */
+    .latest-title {
+      font-family: var(--display);
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: 2px; line-height: 1.1;
+      margin-bottom: .4rem;
+    }
+
+    /* [LATEST_TYPE] */
+    .latest-type {
+      font-family: var(--heading);
+      font-size: .85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--grey2);
+      margin-bottom: 1.8rem;
+    }
+
+    .latest-desc {
+      font-size: .95rem;
+      line-height: 1.75;
+      color: var(--grey2);
+      margin-bottom: 2rem;
+      max-width: 440px;
+    }
+
+    .stream-grid {
+      display: flex; flex-wrap: wrap; gap: .6rem;
+    }
+    .stream-btn {
+      display: inline-flex; align-items: center; gap: .55rem;
+      padding: .6rem 1.2rem;
+      font-family: var(--heading);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: var(--bg3);
+      color: var(--grey1);
+      border: 1px solid rgba(255,255,255,.07);
+      transition: all .2s;
+    }
+    .stream-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .stream-btn i { font-size: .95rem; }
+
+    /* ── DISCOGRAPHY ──────────────────────────────────── */
+    #music {
+      max-width: 1200px; margin: 0 auto;
+      padding: 6.5rem 2rem;
+    }
+
+    .discog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .discog-card {
+      background: var(--bg3);
+      border: 1px solid rgba(255,255,255,.05);
+      transition: border-color .2s, transform .2s;
+      cursor: pointer;
+    }
+    .discog-card:hover { border-color: var(--gold-line); transform: translateY(-5px); }
+
+    /* [DISCOG_COVER_1–4] — replace .ph inside .discog-cover with <img src="..."> */
+    .discog-cover { aspect-ratio: 1; overflow: hidden; }
+
+    .discog-info { padding: 1rem; }
+    .discog-title {
+      font-family: var(--heading);
+      font-size: 1rem; font-weight: 700;
+      letter-spacing: 1px; margin-bottom: .2rem;
+    }
+    .discog-meta {
+      font-size: .78rem; color: var(--grey2);
+      letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    .discog-links { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .discog-link {
+      font-family: var(--heading);
+      font-size: .65rem; font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--gold); opacity: .6;
+      transition: opacity .2s;
+    }
+    .discog-link:hover { opacity: 1; }
+    .discog-link + .discog-link::before {
+      content: '·'; margin-right: .4rem; color: var(--grey3); opacity: 1;
+    }
+
+    /* ── VIDEOS ───────────────────────────────────────── */
+    #videos {
+      background: var(--bg2);
+      padding: 6.5rem 2rem;
+    }
+    #videos .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .video-card {
+      background: var(--bg3);
+      border: 1px solid rgba(255,255,255,.05);
+      transition: border-color .2s;
+    }
+    .video-card:hover { border-color: var(--gold-line); }
+
+    .video-embed {
+      position: relative; aspect-ratio: 16/9; overflow: hidden;
+      background: #000;
+    }
+    /* [VIDEO_ID_1–3] Replace VIDEO_ID_N in each src below */
+    .video-embed iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; border: none;
+    }
+    .video-embed .ph { position: absolute; inset: 0; }
+
+    .video-info { padding: 1rem; }
+    .video-title {
+      font-family: var(--heading);
+      font-size: .98rem; font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .video-date { font-size: .78rem; color: var(--grey2); margin-top: .2rem; }
+
+    /* ── MERCH ────────────────────────────────────────── */
+    #merch {
+      max-width: 1200px; margin: 0 auto;
+      padding: 6.5rem 2rem;
+    }
+
+    .merch-top {
+      display: flex; align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;
+    }
+
+    .merch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .merch-card {
+      background: var(--bg3);
+      border: 1px solid rgba(255,255,255,.05);
+      transition: border-color .2s;
+    }
+    .merch-card:hover { border-color: var(--gold-line); }
+
+    /* [MERCH_IMG_1–6] — replace .ph inside .merch-img with <img src="..."> */
+    .merch-img {
+      aspect-ratio: 1; overflow: hidden; position: relative;
+    }
+    .merch-badge {
+      position: absolute; top: .9rem; right: .9rem; z-index: 1;
+      background: linear-gradient(135deg, #f0f0f0, #a0a0a0);
+      color: #000;
+      font-family: var(--heading);
+      font-size: .6rem; font-weight: 700;
+      letter-spacing: 2px; padding: .22rem .65rem;
+      text-transform: uppercase;
+    }
+
+    .merch-body {
+      padding: 1rem;
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .merch-name {
+      font-family: var(--heading);
+      font-size: .98rem; font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .merch-cat {
+      font-size: .72rem; color: var(--grey2);
+      letter-spacing: 1px; text-transform: uppercase;
+      margin-top: .2rem;
+    }
+    /* [MERCH_PRICE_1–6] */
+    .merch-price {
+      font-family: var(--display);
+      font-size: 1rem; font-weight: 700; letter-spacing: 1px;
+      background: linear-gradient(135deg, #f0f0f0, #888, #d0d0d0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    /* [MERCH_STORE_URL] */
+    .merch-shop {
+      display: block; text-align: center;
+      padding: .7rem;
+      font-family: var(--heading);
+      font-size: .75rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      background: var(--gold-dim);
+      color: var(--grey3);
+      border-top: 1px solid var(--gold-line);
+      cursor: default;
+    }
+
+    /* ── TOUR / SHOWS ─────────────────────────────────── */
+    #shows {
+      background: var(--bg2);
+      padding: 6.5rem 2rem;
+    }
+    #shows .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .shows-list {
+      display: flex; flex-direction: column;
+      gap: 1px; background: var(--gold-dim);
+    }
+
+    .show-row {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 2rem; align-items: center;
+      padding: 1.5rem 1.5rem;
+      background: var(--bg2);
+      transition: background .2s;
+    }
+    .show-row:hover { background: var(--bg3); }
+
+    .show-date { text-align: center; }
+    .show-day  {
+      font-family: var(--display);
+      font-size: 1.6rem; font-weight: 800; line-height: 1;
+      background: linear-gradient(135deg, #f0f0f0, #888);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .show-month {
+      font-family: var(--heading);
+      font-size: .65rem; letter-spacing: 3px;
+      color: var(--grey2); text-transform: uppercase;
+    }
+    .show-venue {
+      font-family: var(--heading);
+      font-size: 1.05rem; font-weight: 700; letter-spacing: 1px;
+    }
+    .show-city { font-size: .82rem; color: var(--grey2); margin-top: .2rem; }
+
+    .no-shows {
+      padding: 4rem 2rem; text-align: center;
+    }
+    .no-shows i { font-size: 2.5rem; color: var(--grey3); margin-bottom: 1rem; display: block; }
+    .no-shows p {
+      font-family: var(--heading);
+      font-size: .9rem; letter-spacing: 3px;
+      color: var(--grey2); text-transform: uppercase;
+    }
+
+    /* ── ABOUT ────────────────────────────────────────── */
+    #about {
+      max-width: 1200px; margin: 0 auto;
+      padding: 6.5rem 2rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.7fr;
+      gap: 5rem; align-items: start;
+    }
+
+    /* [ABOUT_PHOTO] */
+    .about-photo-wrap {
+      position: relative;
+    }
+    .about-photo-wrap::after {
+      content: '';
+      position: absolute; bottom: -10px; right: -10px;
+      width: 60%; height: 3px;
+      background: linear-gradient(90deg, #707070, #f0f0f0, #707070);
+    }
+    .about-photo {
+      aspect-ratio: 3/4; overflow: hidden;
+      border: 1px solid var(--gold-line);
+    }
+
+    .about-body { padding-top: .5rem; }
+
+    .about-body p {
+      font-size: .97rem; line-height: 1.85;
+      color: var(--grey2); margin-bottom: 1.4rem;
+    }
+    .about-body p:first-of-type { font-size: 1.08rem; color: var(--grey1); }
+
+    .about-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--gold-dim);
+    }
+    .stat-num {
+      font-family: var(--display);
+      font-size: 1.8rem; font-weight: 800;
+      background: linear-gradient(135deg, #f0f0f0, #888, #d0d0d0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 1px; line-height: 1;
+    }
+    /* [STATS] */
+    .stat-lbl {
+      font-family: var(--heading);
+      font-size: .65rem; letter-spacing: 3px;
+      color: var(--grey2); text-transform: uppercase;
+      margin-top: .3rem;
+    }
+
+    /* ── PRESS / MEDIA ────────────────────────────────── */
+    #press {
+      background: var(--bg2);
+      padding: 6.5rem 2rem;
+    }
+    #press .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    /* [PRESS_PHOTO_1–5] */
+    .press-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem; margin-bottom: 2.5rem;
+    }
+    .press-photo {
+      aspect-ratio: 2/3; overflow: hidden; position: relative;
+      cursor: pointer; border: 1px solid transparent;
+      transition: border-color .2s;
+    }
+    .press-photo:hover { border-color: var(--gold-line); }
+    .press-photo .ph { position: absolute; inset: 0; }
+    .press-dl {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,.72);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: .5rem;
+      opacity: 0; transition: opacity .2s;
+    }
+    .press-photo:hover .press-dl { opacity: 1; }
+    .press-dl i   { font-size: 1.3rem; color: var(--gold); }
+    .press-dl span {
+      font-family: var(--heading);
+      font-size: .65rem; letter-spacing: 3px; color: #fff;
+      text-transform: uppercase;
+    }
+
+    /* [PRESS_KIT_URL] */
+    .press-kit-bar {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 1.75rem 2rem;
+      background: var(--bg3);
+      border: 1px solid var(--gold-dim);
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .press-kit-bar h3 {
+      font-family: var(--heading);
+      font-size: 1.1rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+    }
+    .press-kit-bar p { font-size: .82rem; color: var(--grey2); margin-top: .2rem; }
+
+    /* ── GALLERY ──────────────────────────────────────── */
+    #gallery {
+      max-width: 1200px; margin: 0 auto;
+      padding: 6.5rem 2rem;
+    }
+
+    /* [GALLERY_1–7] — replace .ph inside each .g-item with <img src="..."> */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 220px;
+      gap: .75rem;
+    }
+    .g-item {
+      overflow: hidden; position: relative;
+      cursor: pointer; background: var(--bg3);
+    }
+    .g-item .ph    { position: absolute; inset: 0; }
+    .g-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .g-item:nth-child(5) { grid-column: span 2; }
+
+    .g-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,.5);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .2s;
+    }
+    .g-item:hover .g-overlay { opacity: 1; }
+    .g-overlay i { font-size: 1.4rem; color: #fff; }
+
+    /* tinted placeholder backgrounds */
+    .g-item:nth-child(1) .ph { background: linear-gradient(145deg,#1a1712,#111); }
+    .g-item:nth-child(2) .ph { background: linear-gradient(145deg,#141414,#1a1a1a); }
+    .g-item:nth-child(3) .ph { background: linear-gradient(145deg,#121414,#111); }
+    .g-item:nth-child(4) .ph { background: linear-gradient(145deg,#141212,#111); }
+    .g-item:nth-child(5) .ph { background: linear-gradient(145deg,#121212,#1c1c14); }
+    .g-item:nth-child(6) .ph { background: linear-gradient(145deg,#141414,#121214); }
+    .g-item:nth-child(7) .ph { background: linear-gradient(145deg,#141212,#1a1414); }
+
+    /* ── MAILING LIST ─────────────────────────────────── */
+    #mailing {
+      padding: 6.5rem 2rem;
+      background: linear-gradient(135deg, #000 0%, #0a0a0a 50%, #000 100%);
+      border-top: 1px solid var(--gold-dim);
+      border-bottom: 1px solid var(--gold-dim);
+      text-align: center;
+    }
+    #mailing .section-inner { max-width: 560px; margin: 0 auto; }
+
+    #mailing .section-title { margin-bottom: .6rem; }
+    #mailing p {
+      font-family: var(--heading);
+      font-size: .88rem; letter-spacing: 2px;
+      color: var(--grey2); text-transform: uppercase;
+      margin-bottom: 2.2rem; line-height: 1.6;
+    }
+
+    .mail-form { display: flex; gap: 0; }
+    .mail-form input {
+      flex: 1; padding: .95rem 1.4rem;
+      background: var(--bg3);
+      border: 1px solid var(--gold-dim); border-right: none;
+      color: #fff; font-family: var(--body); font-size: .9rem;
+      outline: none; transition: border-color .2s;
+    }
+    .mail-form input:focus { border-color: var(--gold); }
+    .mail-form input::placeholder { color: var(--grey3); }
+    .mail-form button {
+      padding: .95rem 2rem;
+      background: linear-gradient(135deg, #f0f0f0 0%, #9a9a9a 45%, #d8d8d8 100%);
+      color: #000;
+      border: none; cursor: pointer;
+      font-family: var(--heading);
+      font-size: .78rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      transition: all .2s; white-space: nowrap;
+    }
+    .mail-form button:hover {
+      background: linear-gradient(135deg, #fff 0%, #d0d0d0 100%);
+    }
+
+    .mail-note {
+      font-size: .72rem; color: var(--grey3);
+      margin-top: 1rem; letter-spacing: 1px;
+    }
+
+    /* ── CONTACT ──────────────────────────────────────── */
+    #contact {
+      max-width: 1200px; margin: 0 auto;
+      padding: 6.5rem 2rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5rem;
+    }
+
+    .contact-info-block { padding-top: .5rem; }
+
+    .contact-info-block h3 {
+      font-family: var(--heading);
+      font-size: .78rem; font-weight: 700;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: .4rem;
+    }
+    .contact-info-block p {
+      font-size: .9rem; color: var(--grey2);
+      line-height: 1.7; margin-bottom: 2rem;
+    }
+
+    /* [BOOKING_EMAIL] */
+    .contact-email a {
+      font-family: var(--heading);
+      font-size: 1.05rem; font-weight: 600;
+      letter-spacing: 1px; color: #fff;
+      transition: color .2s;
+    }
+    .contact-email a:hover { color: var(--gold); }
+    .contact-email-lbl {
+      font-family: var(--heading);
+      font-size: .65rem; letter-spacing: 3px;
+      color: var(--grey3); text-transform: uppercase;
+      margin-bottom: .3rem;
+    }
+
+    /* [FORM_ENDPOINT] */
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: .35rem; }
+    .form-group label {
+      font-family: var(--heading);
+      font-size: .65rem; font-weight: 700;
+      letter-spacing: 3px; color: var(--grey2);
+      text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: .82rem 1rem;
+      background: var(--bg3);
+      border: 1px solid rgba(255,255,255,.07);
+      color: #fff; font-family: var(--body);
+      font-size: .9rem; outline: none;
+      transition: border-color .2s;
+      -webkit-appearance: none;
+    }
+    .form-group select { cursor: pointer; }
+    .form-group select option { background: #1a1a1a; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    footer {
+      background: #000;
+      border-top: 1px solid var(--gold-dim);
+      padding: 3.5rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 2rem;
+    }
+
+    .footer-logo {
+      font-family: var(--display);
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      background: linear-gradient(135deg, #f0f0f0 0%, #707070 50%, #f0f0f0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* [SOCIAL LINKS] */
+    .social-row { display: flex; gap: 1rem; }
+    .social-btn {
+      display: flex; align-items: center; justify-content: center;
+      width: 42px; height: 42px;
+      border: 1px solid rgba(255,255,255,.1);
+      color: var(--grey2);
+      font-size: .95rem;
+      transition: all .2s;
+    }
+    .social-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
+    .footer-nav a {
+      font-family: var(--heading);
+      font-size: .72rem; letter-spacing: 2px;
+      color: var(--grey3); text-transform: uppercase;
+      transition: color .2s;
+    }
+    .footer-nav a:hover { color: var(--gold); }
+
+    .footer-copy {
+      font-size: .72rem; color: var(--grey3);
+      letter-spacing: 1px; text-align: center;
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 960px) {
+      .latest-inner  { grid-template-columns: 1fr; gap: 3.5rem; }
+      .about-grid    { grid-template-columns: 1fr; gap: 3rem; }
+      .about-photo   { aspect-ratio: 16/9; }
+      .contact-grid  { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2,1fr);
+        grid-auto-rows: 160px;
+      }
+      .g-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+      .g-item:nth-child(5) { grid-column: span 1; }
+
+      .form-row { grid-template-columns: 1fr; }
+
+      .show-row {
+        grid-template-columns: 60px 1fr;
+        gap: 1rem;
+      }
+      .show-row .btn-sm { grid-column: span 2; text-align: center; }
+    }
+
+    @media (max-width: 520px) {
+      .mail-form { flex-direction: column; }
+      .mail-form input { border-right: 1px solid var(--gold-dim); }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .discog-grid { grid-template-columns: repeat(2,1fr); }
+      .videos-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 200px; }
+      .g-item:nth-child(1) { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─────────────── NAV ─────────────── -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo">JAYHUNCHO</a>
+
+    <ul class="nav-links">
+      <li><a href="#latest">Music</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#merch">Merch</a></li>
+      <li><a href="#shows">Shows</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#press">Press</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu">
+    <a href="#latest"  class="mobile-link">Music</a>
+    <a href="#videos"  class="mobile-link">Videos</a>
+    <a href="#merch"   class="mobile-link">Merch</a>
+    <a href="#shows"   class="mobile-link">Shows</a>
+    <a href="#about"   class="mobile-link">About</a>
+    <a href="#press"   class="mobile-link">Press</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+  </div>
+
+  <!-- ─────────────── HERO ─────────────── -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-line hero-line-1"></div>
+    <div class="hero-line hero-line-2"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Official Website</p>
+      <h1 class="hero-name">JAYHUNCHO</h1>
+      <!-- [HERO_TAGLINE] — update this line -->
+      <p class="hero-tagline">No Days Off &nbsp;·&nbsp; No Limits &nbsp;·&nbsp; No Excuses</p>
+      <div class="hero-cta">
+        <!-- [SPOTIFY_LINK] -->
+        <a href="https://open.spotify.com/artist/54KJmDwDjz0UCKPDVpsS41" class="btn btn-gold">Listen Now</a>
+        <a href="#music" class="btn btn-outline">Discography</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- ─────────────── LATEST RELEASE ─────────────── -->
+  <section id="latest">
+    <div class="latest-inner">
+
+      <!-- Cover Art -->
+      <div class="cover-art-wrap">
+        <div class="ph-wrap">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/5c/83/ca/5c83ca25-1e3d-2d52-a342-b176ac39d652/827425915784-copy-1169a1ca.png/600x600bb.jpg" alt="Best You Ever Seen — Jayhuncho" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+      </div>
+
+      <div>
+        <span class="latest-tag">Latest Release</span>
+        <h2 class="latest-title">BEST YOU EVER SEEN</h2>
+        <p class="latest-type">Single &nbsp;·&nbsp; June 17, 2026</p>
+        <p class="latest-desc">
+          Still. Focused. Inevitable. Jayhuncho steps out with his most confident record yet — a reminder that greatness was never a question, only a matter of time. Stream it now.
+        </p>
+
+        <div class="stream-grid">
+          <!-- [SPOTIFY_LINK] -->
+          <a href="https://open.spotify.com/artist/54KJmDwDjz0UCKPDVpsS41" class="stream-btn" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-spotify"></i> Spotify
+          </a>
+          <!-- Apple Music -->
+          <a href="https://music.apple.com/us/artist/jayhuncho/1753731818" class="stream-btn" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-apple"></i> Apple Music
+          </a>
+          <!-- [SOUNDCLOUD_LINK] -->
+          <a href="https://on.soundcloud.com/Vu32jU7iy3WUyrn2nI" class="stream-btn" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-soundcloud"></i> SoundCloud
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─────────────── DISCOGRAPHY ─────────────── -->
+  <section id="music">
+    <div class="section-header">
+      <span class="label">Discography</span>
+      <h2 class="section-title">Music</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="discog-grid">
+
+      <div class="discog-card">
+        <div class="discog-cover">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/c0/c3/48/c0c3487a-9ba1-60ba-f876-818830304cc7/822299814607-copy-7de17635.png/600x600bb.jpg" alt="What I Think" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="discog-info">
+          <p class="discog-title">WHAT I THINK</p>
+          <p class="discog-meta">Single &nbsp;·&nbsp; 2026</p>
+          <div class="discog-links">
+            <a href="https://open.spotify.com/artist/54KJmDwDjz0UCKPDVpsS41"        class="discog-link" target="_blank">Spotify</a>
+            <a href="https://music.apple.com/us/album/what-i-think/1891758303"       class="discog-link" target="_blank">Apple</a>
+            <a href="https://on.soundcloud.com/Vu32jU7iy3WUyrn2nI"                  class="discog-link" target="_blank">SoundCloud</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="discog-card">
+        <div class="discog-cover">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/03/29/03/032903fe-f439-3634-18fb-635c5ebc57cd/822299475853-copy-5a8f062f.png/600x600bb.jpg" alt="Here's Why" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="discog-info">
+          <p class="discog-title">HERE'S WHY</p>
+          <p class="discog-meta">Single &nbsp;·&nbsp; 2026</p>
+          <div class="discog-links">
+            <a href="https://open.spotify.com/artist/54KJmDwDjz0UCKPDVpsS41"                          class="discog-link" target="_blank">Spotify</a>
+            <a href="https://music.apple.com/us/album/heres-why-feat-jaydyhades-single/1886487362"    class="discog-link" target="_blank">Apple</a>
+            <a href="https://on.soundcloud.com/Vu32jU7iy3WUyrn2nI"                                    class="discog-link" target="_blank">SoundCloud</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="discog-card">
+        <div class="discog-cover">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/92/44/e1/9244e1e9-805a-487e-d868-09cfb6125a32/822299665957-copy-96c1a121.png/600x600bb.jpg" alt="I Feel Brand New" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="discog-info">
+          <p class="discog-title">I FEEL BRAND NEW</p>
+          <p class="discog-meta">Single &nbsp;·&nbsp; 2026</p>
+          <div class="discog-links">
+            <a href="https://open.spotify.com/artist/54KJmDwDjz0UCKPDVpsS41"                      class="discog-link" target="_blank">Spotify</a>
+            <a href="https://music.apple.com/us/album/i-feel-brand-new-single/1889446486"          class="discog-link" target="_blank">Apple</a>
+            <a href="https://on.soundcloud.com/Vu32jU7iy3WUyrn2nI"                                class="discog-link" target="_blank">SoundCloud</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="discog-card">
+        <div class="discog-cover">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/26/94/14/269414d1-0e45-82f0-7eb5-34af2879edc4/artwork.jpg/600x600bb.jpg" alt="Underwear" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="discog-info">
+          <p class="discog-title">UNDERWEAR</p>
+          <p class="discog-meta">Single &nbsp;·&nbsp; 2026</p>
+          <div class="discog-links">
+            <a href="https://open.spotify.com/artist/54KJmDwDjz0UCKPDVpsS41"              class="discog-link" target="_blank">Spotify</a>
+            <a href="https://music.apple.com/us/album/underwear-single/1886358726"         class="discog-link" target="_blank">Apple</a>
+            <a href="https://on.soundcloud.com/Vu32jU7iy3WUyrn2nI"                        class="discog-link" target="_blank">SoundCloud</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="discog-card">
+        <div class="discog-cover">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/20/d8/04/20d80420-78d6-7363-f4cd-5754f437c45d/199976758258.png/600x600bb.jpg" alt="Visiting Rome!" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="discog-info">
+          <p class="discog-title">VISITING ROME!</p>
+          <p class="discog-meta">Single &nbsp;·&nbsp; 2026</p>
+          <div class="discog-links">
+            <a href="https://open.spotify.com/artist/54KJmDwDjz0UCKPDVpsS41"                  class="discog-link" target="_blank">Spotify</a>
+            <a href="https://music.apple.com/us/album/visiting-rome-single/1875138341"         class="discog-link" target="_blank">Apple</a>
+            <a href="https://on.soundcloud.com/Vu32jU7iy3WUyrn2nI"                            class="discog-link" target="_blank">SoundCloud</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="discog-card">
+        <div class="discog-cover">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/da/19/a2/da19a285-9a3e-85a7-e1f9-0f195960d7b7/artwork.jpg/600x600bb.jpg" alt="My Soulmate Would Never" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="discog-info">
+          <p class="discog-title">MY SOULMATE WOULD NEVER</p>
+          <p class="discog-meta">Single &nbsp;·&nbsp; 2026</p>
+          <div class="discog-links">
+            <a href="https://open.spotify.com/artist/54KJmDwDjz0UCKPDVpsS41"                            class="discog-link" target="_blank">Spotify</a>
+            <a href="https://music.apple.com/us/album/my-soulmate-would-never-single/1872951411"         class="discog-link" target="_blank">Apple</a>
+            <a href="https://on.soundcloud.com/Vu32jU7iy3WUyrn2nI"                                      class="discog-link" target="_blank">SoundCloud</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="discog-card">
+        <div class="discog-cover">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b4/39/d9/b439d90b-df44-3474-1a9b-814b83f4e506/artwork.jpg/600x600bb.jpg" alt="Jewels" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="discog-info">
+          <p class="discog-title">JEWELS</p>
+          <p class="discog-meta">Single &nbsp;·&nbsp; 2026</p>
+          <div class="discog-links">
+            <a href="https://open.spotify.com/artist/54KJmDwDjz0UCKPDVpsS41"              class="discog-link" target="_blank">Spotify</a>
+            <a href="https://music.apple.com/us/album/jewels-single/1865896770"            class="discog-link" target="_blank">Apple</a>
+            <a href="https://on.soundcloud.com/Vu32jU7iy3WUyrn2nI"                        class="discog-link" target="_blank">SoundCloud</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="discog-card">
+        <div class="discog-cover">
+          <div class="ph"><i class="fa-solid fa-compact-disc"></i><span>Add Cover</span></div>
+        </div>
+        <div class="discog-info">
+          <p class="discog-title">HATTRICK</p>
+          <p class="discog-meta">Single &nbsp;·&nbsp; 2025</p>
+          <div class="discog-links">
+            <a href="https://open.spotify.com/artist/54KJmDwDjz0UCKPDVpsS41" class="discog-link" target="_blank">Spotify</a>
+            <a href="https://on.soundcloud.com/Vu32jU7iy3WUyrn2nI"           class="discog-link" target="_blank">SoundCloud</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─────────────── VIDEOS ─────────────── -->
+  <section id="videos">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="label">Visual</span>
+        <h2 class="section-title">Videos</h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="videos-grid">
+
+        <!-- [VIDEO_ID_1] — replace VIDEO_ID_1 with real YouTube ID -->
+        <div class="video-card">
+          <div class="video-embed">
+            <!--
+              To activate: remove the .ph div and uncomment the iframe below.
+              <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen title="Video 1"></iframe>
+            -->
+            <div class="ph"><i class="fa-brands fa-youtube"></i><span>Add Video ID</span></div>
+          </div>
+          <div class="video-info">
+            <!-- [VIDEO_TITLE_1] -->
+            <p class="video-title">VIDEO TITLE</p>
+            <p class="video-date">Official Music Video</p>
+          </div>
+        </div>
+
+        <!-- [VIDEO_ID_2] -->
+        <div class="video-card">
+          <div class="video-embed">
+            <!--
+              <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen title="Video 2"></iframe>
+            -->
+            <div class="ph"><i class="fa-brands fa-youtube"></i><span>Add Video ID</span></div>
+          </div>
+          <div class="video-info">
+            <!-- [VIDEO_TITLE_2] -->
+            <p class="video-title">VIDEO TITLE</p>
+            <p class="video-date">Official Music Video</p>
+          </div>
+        </div>
+
+        <!-- [VIDEO_ID_3] -->
+        <div class="video-card">
+          <div class="video-embed">
+            <!--
+              <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen title="Video 3"></iframe>
+            -->
+            <div class="ph"><i class="fa-brands fa-youtube"></i><span>Add Video ID</span></div>
+          </div>
+          <div class="video-info">
+            <!-- [VIDEO_TITLE_3] -->
+            <p class="video-title">VIDEO TITLE</p>
+            <p class="video-date">Official Music Video</p>
+          </div>
+        </div>
+
+      </div><!-- /.videos-grid -->
+
+    </div>
+  </section>
+
+  <!-- ─────────────── MERCH ─────────────── -->
+  <section id="merch">
+    <div class="merch-top">
+      <div>
+        <span class="label">Official Store</span>
+        <h2 class="section-title">Merch</h2>
+        <div class="divider"></div>
+      </div>
+      <span class="btn btn-outline" style="opacity:.4; cursor:default;">
+        Store Coming Soon
+      </span>
+    </div>
+
+    <div class="merch-grid">
+
+      <!-- [MERCH_IMG_1] [MERCH_PRICE_1] -->
+      <div class="merch-card">
+        <div class="merch-img">
+          <span class="merch-badge">New</span>
+          <div class="ph"><i class="fa-solid fa-shirt"></i><span>Product Photo</span></div>
+        </div>
+        <div class="merch-body">
+          <div>
+            <p class="merch-name">LOGO TEE</p>
+            <p class="merch-cat">T-Shirt</p>
+          </div>
+          <p class="merch-price">$--</p>
+        </div>
+        <!-- [MERCH_STORE_URL] -->
+        <span class="merch-shop">Coming Soon</span>
+      </div>
+
+      <!-- [MERCH_IMG_2] [MERCH_PRICE_2] -->
+      <div class="merch-card">
+        <div class="merch-img">
+          <span class="merch-badge">New</span>
+          <div class="ph"><i class="fa-solid fa-shirt"></i><span>Product Photo</span></div>
+        </div>
+        <div class="merch-body">
+          <div>
+            <p class="merch-name">HUNCHO HOODIE</p>
+            <p class="merch-cat">Hoodie</p>
+          </div>
+          <p class="merch-price">$--</p>
+        </div>
+        <span class="merch-shop">Coming Soon</span>
+      </div>
+
+      <!-- [MERCH_IMG_3] [MERCH_PRICE_3] -->
+      <div class="merch-card">
+        <div class="merch-img">
+          <div class="ph"><i class="fa-solid fa-hat-cowboy"></i><span>Product Photo</span></div>
+        </div>
+        <div class="merch-body">
+          <div>
+            <p class="merch-name">SNAPBACK CAP</p>
+            <p class="merch-cat">Hat</p>
+          </div>
+          <p class="merch-price">$--</p>
+        </div>
+        <span class="merch-shop">Coming Soon</span>
+      </div>
+
+      <!-- [MERCH_IMG_4] [MERCH_PRICE_4] -->
+      <div class="merch-card">
+        <div class="merch-img">
+          <div class="ph"><i class="fa-solid fa-shirt"></i><span>Product Photo</span></div>
+        </div>
+        <div class="merch-body">
+          <div>
+            <p class="merch-name">LONG SLEEVE</p>
+            <p class="merch-cat">Long Sleeve</p>
+          </div>
+          <p class="merch-price">$--</p>
+        </div>
+        <span class="merch-shop">Coming Soon</span>
+      </div>
+
+      <!-- [MERCH_IMG_5] [MERCH_PRICE_5] -->
+      <div class="merch-card">
+        <div class="merch-img">
+          <div class="ph"><i class="fa-solid fa-shirt"></i><span>Product Photo</span></div>
+        </div>
+        <div class="merch-body">
+          <div>
+            <p class="merch-name">MESH SHORTS</p>
+            <p class="merch-cat">Shorts</p>
+          </div>
+          <p class="merch-price">$--</p>
+        </div>
+        <span class="merch-shop">Coming Soon</span>
+      </div>
+
+      <!-- [MERCH_IMG_6] [MERCH_PRICE_6] -->
+      <div class="merch-card">
+        <div class="merch-img">
+          <span class="merch-badge">Bundle</span>
+          <div class="ph"><i class="fa-solid fa-box-open"></i><span>Product Photo</span></div>
+        </div>
+        <div class="merch-body">
+          <div>
+            <p class="merch-name">STARTER BUNDLE</p>
+            <p class="merch-cat">Bundle</p>
+          </div>
+          <p class="merch-price">$--</p>
+        </div>
+        <span class="merch-shop">Coming Soon</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─────────────── SHOWS ─────────────── -->
+  <section id="shows">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="label">Live</span>
+        <h2 class="section-title">Tour &amp; Shows</h2>
+        <div class="divider"></div>
+      </div>
+
+      <!-- ─── NO SHOWS STATE — delete this div when you have real dates ─── -->
+      <div class="no-shows">
+        <i class="fa-solid fa-calendar-xmark"></i>
+        <p>No shows currently scheduled<br>Check back soon</p>
+      </div>
+
+      <!-- ─── REAL SHOWS — uncomment and fill in when dates are confirmed ──
+      <div class="shows-list">
+
+        <div class="show-row">
+          <div class="show-date">
+            <p class="show-day">01</p>
+            <p class="show-month">Aug</p>
+          </div>
+          <div>
+            <p class="show-venue">VENUE NAME</p>
+            <p class="show-city">City, State</p>
+          </div>
+          <a href="#TICKETS_LINK" class="btn btn-outline btn-sm" target="_blank">Get Tickets</a>
+        </div>
+
+        <div class="show-row">
+          <div class="show-date">
+            <p class="show-day">15</p>
+            <p class="show-month">Aug</p>
+          </div>
+          <div>
+            <p class="show-venue">VENUE NAME</p>
+            <p class="show-city">City, State</p>
+          </div>
+          <a href="#TICKETS_LINK" class="btn btn-outline btn-sm" target="_blank">Get Tickets</a>
+        </div>
+
+      </div>
+      ─── END SHOWS ─── -->
+
+    </div>
+  </section>
+
+  <!-- ─────────────── ABOUT ─────────────── -->
+  <section id="about">
+    <div class="about-grid">
+
+      <!-- [ABOUT_PHOTO] — replace .ph div with <img src="your-photo.jpg" alt="Jayhuncho"> -->
+      <div class="about-photo-wrap">
+        <div class="about-photo">
+          <div class="ph" style="aspect-ratio:3/4;">
+            <i class="fa-solid fa-user"></i>
+            <span>Artist Photo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-body">
+        <div class="section-header">
+          <span class="label">The Story</span>
+          <h2 class="section-title">About</h2>
+          <div class="divider"></div>
+        </div>
+
+        <p>
+          At just 20 years old, Jayhuncho is one of Teaneck, NJ's most promising voices — a rapper
+          built on rhythm, flow, and a sound that hits different every time. His music doesn't follow
+          a formula. It moves the way he moves: fluid, intentional, and impossible to ignore.
+        </p>
+        <p>
+          The motivation behind everything he does runs deeper than fame. Jayhuncho raps to get free —
+          free to take care of his people, free to open doors that weren't open before, free to prove
+          that where you're from doesn't have to be where you stay. Every record is a step closer to that.
+        </p>
+        <p>
+          The world is just now meeting Jayhuncho. The music is locked in, the momentum is building,
+          and the best is genuinely still to come. Watch closely.
+        </p>
+
+        <!-- [STATS] — update the three numbers below -->
+        <div class="about-stats">
+          <div>
+            <p class="stat-num">0M+</p>
+            <p class="stat-lbl">Streams</p>
+          </div>
+          <div>
+            <p class="stat-num">0K+</p>
+            <p class="stat-lbl">Followers</p>
+          </div>
+          <div>
+            <p class="stat-num">0+</p>
+            <p class="stat-lbl">Releases</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─────────────── PRESS / MEDIA ─────────────── -->
+  <section id="press">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="label">Media</span>
+        <h2 class="section-title">Press</h2>
+        <div class="divider"></div>
+      </div>
+
+      <!-- [PRESS_PHOTO_1–5] — replace each .ph div with <img src="press-photo-N.jpg"> -->
+      <div class="press-grid">
+
+        <div class="press-photo">
+          <div class="ph"><i class="fa-solid fa-camera"></i><span>Press Photo 1</span></div>
+          <div class="press-dl">
+            <i class="fa-solid fa-download"></i>
+            <span>Download</span>
+          </div>
+        </div>
+
+        <div class="press-photo">
+          <div class="ph"><i class="fa-solid fa-camera"></i><span>Press Photo 2</span></div>
+          <div class="press-dl">
+            <i class="fa-solid fa-download"></i>
+            <span>Download</span>
+          </div>
+        </div>
+
+        <div class="press-photo">
+          <div class="ph"><i class="fa-solid fa-camera"></i><span>Press Photo 3</span></div>
+          <div class="press-dl">
+            <i class="fa-solid fa-download"></i>
+            <span>Download</span>
+          </div>
+        </div>
+
+        <div class="press-photo">
+          <div class="ph"><i class="fa-solid fa-camera"></i><span>Press Photo 4</span></div>
+          <div class="press-dl">
+            <i class="fa-solid fa-download"></i>
+            <span>Download</span>
+          </div>
+        </div>
+
+        <div class="press-photo">
+          <div class="ph"><i class="fa-solid fa-camera"></i><span>Press Photo 5</span></div>
+          <div class="press-dl">
+            <i class="fa-solid fa-download"></i>
+            <span>Download</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- [PRESS_KIT_URL] -->
+      <div class="press-kit-bar">
+        <div>
+          <h3>Official Press Kit</h3>
+          <p>Bio, hi-res photos, and artist info — all in one download.</p>
+        </div>
+        <a href="#PRESS_KIT_URL" class="btn btn-gold" download>
+          <i class="fa-solid fa-download" style="margin-right:.5rem;"></i>Download Press Kit
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────── GALLERY ─────────────── -->
+  <section id="gallery">
+    <div class="section-header">
+      <span class="label">Gallery</span>
+      <h2 class="section-title">Photos</h2>
+      <div class="divider"></div>
+    </div>
+
+    <!-- [GALLERY_1–7] — replace each .ph div with <img src="gallery-N.jpg"> -->
+    <div class="gallery-grid">
+
+      <div class="g-item">
+        <div class="ph"><i class="fa-solid fa-image"></i><span>Photo 1</span></div>
+        <div class="g-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+
+      <div class="g-item">
+        <div class="ph"><i class="fa-solid fa-image"></i><span>Photo 2</span></div>
+        <div class="g-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+
+      <div class="g-item">
+        <div class="ph"><i class="fa-solid fa-image"></i><span>Photo 3</span></div>
+        <div class="g-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+
+      <div class="g-item">
+        <div class="ph"><i class="fa-solid fa-image"></i><span>Photo 4</span></div>
+        <div class="g-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+
+      <div class="g-item">
+        <div class="ph"><i class="fa-solid fa-image"></i><span>Photo 5</span></div>
+        <div class="g-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+
+      <div class="g-item">
+        <div class="ph"><i class="fa-solid fa-image"></i><span>Photo 6</span></div>
+        <div class="g-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+
+      <div class="g-item">
+        <div class="ph"><i class="fa-solid fa-image"></i><span>Photo 7</span></div>
+        <div class="g-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─────────────── MAILING LIST ─────────────── -->
+  <section id="mailing">
+    <div class="section-inner">
+      <span class="label">Stay Connected</span>
+      <h2 class="section-title">Join the List</h2>
+      <div class="divider" style="margin: .9rem auto 2rem;"></div>
+      <p>Be the first to know about new music, merch drops, shows, and exclusives.</p>
+
+      <!-- Connect this to Mailchimp, Klaviyo, or ConvertKit for real email capture -->
+      <form class="mail-form" onsubmit="handleMailSubmit(event)">
+        <input type="email" placeholder="Your email address" required aria-label="Email" />
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="mail-note">No spam. Unsubscribe anytime.</p>
+    </div>
+  </section>
+
+  <!-- ─────────────── CONTACT ─────────────── -->
+  <section id="contact">
+    <div class="section-header">
+      <span class="label">Get in Touch</span>
+      <h2 class="section-title">Contact</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-info-block">
+        <h3>Bookings &amp; Features</h3>
+        <p>
+          For show bookings, feature requests, brand deals, and press inquiries —
+          reach out below or email directly.
+        </p>
+
+        <div class="contact-email">
+          <p class="contact-email-lbl">Email</p>
+          <!-- Email rendered via JS to block spam bots -->
+          <a href="#" id="booking-email">Enable JavaScript to view</a>
+        </div>
+
+        <!-- Social repeat for contact section -->
+        <div class="social-row" style="margin-top:2rem; gap:.75rem;">
+          <a href="https://www.instagram.com/jayhxnchooo" class="social-btn" target="_blank" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@jayhunchooo" class="social-btn" target="_blank" aria-label="TikTok">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+          <a href="https://open.spotify.com/artist/54KJmDwDjz0UCKPDVpsS41" class="social-btn" target="_blank" aria-label="Spotify">
+            <i class="fa-brands fa-spotify"></i>
+          </a>
+          <a href="https://on.soundcloud.com/Vu32jU7iy3WUyrn2nI" class="social-btn" target="_blank" aria-label="SoundCloud">
+            <i class="fa-brands fa-soundcloud"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- [FORM_ENDPOINT] — replace action="#FORM_ENDPOINT"
+           Options: https://formspree.io (free), Netlify Forms (add netlify attribute) -->
+      <form class="contact-form" action="#FORM_ENDPOINT" method="POST" onsubmit="handleContact(event)">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="c-name">Name</label>
+            <input type="text" id="c-name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="c-email">Email</label>
+            <input type="email" id="c-email" name="email" placeholder="your@email.com" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="c-subject">Subject</label>
+          <select id="c-subject" name="subject" required>
+            <option value="" disabled selected>Select a topic</option>
+            <option value="booking">Booking</option>
+            <option value="feature">Feature / Collab</option>
+            <option value="press">Press / Media</option>
+            <option value="brand">Brand Deal / Sponsorship</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="c-msg">Message</label>
+          <textarea id="c-msg" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-gold" style="align-self:flex-start;">
+          Send Message &nbsp;<i class="fa-solid fa-paper-plane"></i>
+        </button>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- ─────────────── FOOTER ─────────────── -->
+  <footer>
+    <div class="footer-inner">
+
+      <p class="footer-logo">JAYHUNCHO</p>
+
+      <div class="social-row">
+        <a href="https://www.instagram.com/jayhxnchooo" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@jayhunchooo" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+        <a href="https://open.spotify.com/artist/54KJmDwDjz0UCKPDVpsS41" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+          <i class="fa-brands fa-spotify"></i>
+        </a>
+        <a href="https://music.apple.com/us/artist/jayhuncho/1753731818" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Apple Music">
+          <i class="fa-brands fa-apple"></i>
+        </a>
+        <a href="https://on.soundcloud.com/Vu32jU7iy3WUyrn2nI" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud">
+          <i class="fa-brands fa-soundcloud"></i>
+        </a>
+      </div>
+
+      <nav class="footer-nav">
+        <a href="#latest">Music</a>
+        <a href="#videos">Videos</a>
+        <a href="#merch">Merch</a>
+        <a href="#shows">Shows</a>
+        <a href="#about">About</a>
+        <a href="#press">Press</a>
+        <a href="#mailing">Newsletter</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <p class="footer-copy">
+        &copy; <span id="year"></span> Jayhuncho. All rights reserved.<br />
+        <span style="font-size:.65rem; letter-spacing:1px;">
+          Managed by <strong><!-- [MANAGER_NAME] your name --></strong>
+        </span>
+      </p>
+
+    </div>
+  </footer>
+
+  <!-- ─────────────── JAVASCRIPT ─────────────── -->
+  <script>
+    // ── Year auto-update ──
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ── Email reveal (obfuscated to block spam bots) ──
+    (function() {
+      const u = 'monkmingmanagement';
+      const d = 'gmail.com';
+      const el = document.getElementById('booking-email');
+      if (el) {
+        el.href = 'mailto:' + u + '@' + d;
+        el.textContent = u + '@' + d;
+      }
+    })();
+
+    // ── Sticky nav shadow on scroll ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── Hamburger / mobile menu ──
+    const hamburger   = document.getElementById('hamburger');
+    const mobileMenu  = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ── Mailing list form ──
+    function handleMailSubmit(e) {
+      e.preventDefault();
+      const btn   = e.target.querySelector('button');
+      const input = e.target.querySelector('input');
+      btn.textContent = 'Thank you!';
+      btn.style.background = '#2ecc71';
+      btn.style.color = '#fff';
+      input.value = '';
+      setTimeout(() => {
+        btn.textContent = 'Subscribe';
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 3000);
+      // TODO: connect to Mailchimp / Klaviyo API or form endpoint
+    }
+
+    // ── Contact form ──
+    function handleContact(e) {
+      // Remove this preventDefault once you have a real form endpoint
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<i class="fa-solid fa-check"></i> &nbsp;Sent!';
+      btn.style.background = '#2ecc71';
+      btn.style.color = '#fff';
+      setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 3000);
+      // TODO: set the form action to your real endpoint (Formspree, Netlify, etc.)
+    }
+
+    // ── Fade-in on scroll (IntersectionObserver) ──
+    const faders = document.querySelectorAll(
+      '.discog-card, .merch-card, .video-card, .g-item, .press-photo, .show-row'
+    );
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity  = '1';
+          entry.target.style.transform = 'translateY(0)';
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    faders.forEach(el => {
+      el.style.opacity   = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity .5s ease, transform .5s ease';
+      io.observe(el);
+    });
+  </script>
+
+</body>
+</html>

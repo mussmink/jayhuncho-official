@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+# Microsoft Office temp files
+~$*
+
+# Business documents — keep these off GitHub
+*.docx
+Artist_Manager_Playbook.md
+
+# Temp screenshots
+Screenshot*.png
