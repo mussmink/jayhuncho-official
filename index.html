@@ -359,7 +359,14 @@
       text-transform: uppercase;
       color: var(--grey2);
       margin: 1.6rem 0 2.8rem;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid var(--grey2);
+      width: 0;
+      animation: typewriter 1.4s steps(14) .6s forwards, blink .75s step-end 2s 4;
     }
+    @keyframes typewriter { to { width: 14ch; } }
+    @keyframes blink { 50% { border-color: transparent; } }
 
     .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
@@ -482,13 +489,38 @@
     .discog-card {
       background: var(--bg3);
       border: 1px solid rgba(255,255,255,.05);
-      transition: border-color .2s, transform .2s;
+      transition: border-color .3s, transform .3s, box-shadow .3s;
       cursor: pointer;
     }
-    .discog-card:hover { border-color: var(--gold-line); transform: translateY(-5px); }
+    .discog-card:hover {
+      border-color: var(--gold-line);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.06);
+    }
 
     /* [DISCOG_COVER_1–4] — replace .ph inside .discog-cover with <img src="..."> */
-    .discog-cover { aspect-ratio: 1; overflow: hidden; }
+    .discog-cover { aspect-ratio: 1; overflow: hidden; position: relative; }
+
+    .discog-cover img, .ph-wrap img { transition: transform .4s ease; }
+    .discog-card:hover .discog-cover img,
+    .ph-wrap:hover img { transform: scale(1.06); }
+
+    .discog-play-overlay {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,.45);
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    .discog-card:hover .discog-play-overlay,
+    .ph-wrap:hover .discog-play-overlay { opacity: 1; }
+    .discog-play-overlay i {
+      font-size: 2.4rem;
+      color: #fff;
+      filter: drop-shadow(0 0 12px rgba(255,255,255,.5));
+      transition: transform .2s ease;
+    }
+    .discog-card:hover .discog-play-overlay i { transform: scale(1.12); }
 
     .discog-info { padding: 1rem; }
     .discog-title {
@@ -1098,6 +1130,7 @@
       <div class="cover-art-wrap">
         <div class="ph-wrap">
           <img src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/5c/83/ca/5c83ca25-1e3d-2d52-a342-b176ac39d652/827425915784-copy-1169a1ca.png/600x600bb.jpg" alt="Best You Ever Seen — Jayhuncho" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <div class="discog-play-overlay"><i class="fa-solid fa-play"></i></div>
         </div>
       </div>
 
@@ -1141,6 +1174,7 @@
       <div class="discog-card">
         <div class="discog-cover">
           <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/c0/c3/48/c0c3487a-9ba1-60ba-f876-818830304cc7/822299814607-copy-7de17635.png/600x600bb.jpg" alt="What I Think" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <div class="discog-play-overlay"><i class="fa-solid fa-play"></i></div>
         </div>
         <div class="discog-info">
           <p class="discog-title">WHAT I THINK</p>
@@ -1156,6 +1190,7 @@
       <div class="discog-card">
         <div class="discog-cover">
           <img src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/03/29/03/032903fe-f439-3634-18fb-635c5ebc57cd/822299475853-copy-5a8f062f.png/600x600bb.jpg" alt="Here's Why" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <div class="discog-play-overlay"><i class="fa-solid fa-play"></i></div>
         </div>
         <div class="discog-info">
           <p class="discog-title">HERE'S WHY</p>
@@ -1171,6 +1206,7 @@
       <div class="discog-card">
         <div class="discog-cover">
           <img src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/92/44/e1/9244e1e9-805a-487e-d868-09cfb6125a32/822299665957-copy-96c1a121.png/600x600bb.jpg" alt="I Feel Brand New" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <div class="discog-play-overlay"><i class="fa-solid fa-play"></i></div>
         </div>
         <div class="discog-info">
           <p class="discog-title">I FEEL BRAND NEW</p>
@@ -1186,6 +1222,7 @@
       <div class="discog-card">
         <div class="discog-cover">
           <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/26/94/14/269414d1-0e45-82f0-7eb5-34af2879edc4/artwork.jpg/600x600bb.jpg" alt="Underwear" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <div class="discog-play-overlay"><i class="fa-solid fa-play"></i></div>
         </div>
         <div class="discog-info">
           <p class="discog-title">UNDERWEAR</p>
@@ -1201,6 +1238,7 @@
       <div class="discog-card">
         <div class="discog-cover">
           <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/20/d8/04/20d80420-78d6-7363-f4cd-5754f437c45d/199976758258.png/600x600bb.jpg" alt="Visiting Rome!" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <div class="discog-play-overlay"><i class="fa-solid fa-play"></i></div>
         </div>
         <div class="discog-info">
           <p class="discog-title">VISITING ROME!</p>
@@ -1216,6 +1254,7 @@
       <div class="discog-card">
         <div class="discog-cover">
           <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/da/19/a2/da19a285-9a3e-85a7-e1f9-0f195960d7b7/artwork.jpg/600x600bb.jpg" alt="My Soulmate Would Never" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <div class="discog-play-overlay"><i class="fa-solid fa-play"></i></div>
         </div>
         <div class="discog-info">
           <p class="discog-title">MY SOULMATE WOULD NEVER</p>
@@ -1231,6 +1270,7 @@
       <div class="discog-card">
         <div class="discog-cover">
           <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b4/39/d9/b439d90b-df44-3474-1a9b-814b83f4e506/artwork.jpg/600x600bb.jpg" alt="Jewels" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <div class="discog-play-overlay"><i class="fa-solid fa-play"></i></div>
         </div>
         <div class="discog-info">
           <p class="discog-title">JEWELS</p>
@@ -1246,6 +1286,7 @@
       <div class="discog-card">
         <div class="discog-cover">
           <img src="cover-hattrick.png" alt="Hattrick" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <div class="discog-play-overlay"><i class="fa-solid fa-play"></i></div>
         </div>
         <div class="discog-info">
           <p class="discog-title">HATTRICK</p>
