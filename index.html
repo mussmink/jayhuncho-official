@@ -2083,10 +2083,19 @@
       }, 600);
     })();
 
+  </script>
+
+  <!-- Lightbox -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <span id="lightbox-close" aria-label="Close">&times;</span>
+    <img id="lightbox-img" src="" alt="Gallery photo" />
+  </div>
+
+  <script>
     // ── Gallery lightbox ──
     (function() {
-      const lb    = document.getElementById('lightbox');
-      const lbImg = document.getElementById('lightbox-img');
+      const lb      = document.getElementById('lightbox');
+      const lbImg   = document.getElementById('lightbox-img');
       const lbClose = document.getElementById('lightbox-close');
 
       document.querySelectorAll('.g-item').forEach(item => {
@@ -2109,13 +2118,6 @@
       lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
       document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
     })();
-  </script>
-
-  <!-- Lightbox -->
-  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
-    <span id="lightbox-close" aria-label="Close">&times;</span>
-    <img id="lightbox-img" src="" alt="Gallery photo" />
-  </div>
 
 </body>
 </html>
