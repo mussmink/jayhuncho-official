@@ -1979,24 +1979,37 @@
     }
 
     // ── Fade-in on scroll (IntersectionObserver) ──
-    const faders = document.querySelectorAll(
-      '.discog-card, .merch-card, .video-card, .g-item, .press-photo, .show-row'
-    );
-
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.opacity  = '1';
+          entry.target.style.opacity   = '1';
           entry.target.style.transform = 'translateY(0)';
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
-    faders.forEach(el => {
+    // Single items — fade straight up
+    document.querySelectorAll(
+      '.section-header, .about-text, .about-photo-wrap, ' +
+      '.latest-inner, .merch-coming, .connect-info, ' +
+      '.press-kit-bar, .mail-form, .contact-info-block, .contact-form-wrap'
+    ).forEach(el => {
       el.style.opacity   = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity .5s ease, transform .5s ease';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity .65s ease, transform .65s ease';
+      io.observe(el);
+    });
+
+    // Grid items — stagger within each parent
+    document.querySelectorAll(
+      '.discog-card, .merch-card, .video-card, .g-item, .press-photo, .show-row'
+    ).forEach((el, i) => {
+      const siblings = el.parentElement.querySelectorAll(el.className.split(' ').map(c => '.' + c).join(''));
+      const idx = Array.from(siblings).indexOf(el);
+      el.style.opacity    = '0';
+      el.style.transform  = 'translateY(32px)';
+      el.style.transition = `opacity .55s ease ${idx * 80}ms, transform .55s ease ${idx * 80}ms`;
       io.observe(el);
     });
 
