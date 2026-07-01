@@ -906,6 +906,30 @@
     .g-item:hover .g-overlay { opacity: 1; }
     .g-overlay i { font-size: 1.4rem; color: #fff; }
 
+    /* Lightbox */
+    #lightbox {
+      display: none;
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,.92);
+      align-items: center; justify-content: center;
+      cursor: zoom-out;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 90vw; max-height: 90vh;
+      object-fit: contain;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 0 80px rgba(0,0,0,.8);
+      animation: lbIn .2s ease;
+    }
+    @keyframes lbIn { from { opacity:0; transform: scale(.95); } to { opacity:1; transform: scale(1); } }
+    #lightbox-close {
+      position: absolute; top: 1.2rem; right: 1.5rem;
+      font-size: 2rem; color: #fff; cursor: pointer;
+      line-height: 1; opacity: .7; transition: opacity .2s;
+    }
+    #lightbox-close:hover { opacity: 1; }
+
     /* tinted placeholder backgrounds */
     .g-item:nth-child(1) .ph { background: linear-gradient(145deg,#1a1712,#111); }
     .g-item:nth-child(2) .ph { background: linear-gradient(145deg,#141414,#1a1a1a); }
@@ -2058,7 +2082,40 @@
         }
       }, 600);
     })();
+
+    // ── Gallery lightbox ──
+    (function() {
+      const lb    = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      const lbClose = document.getElementById('lightbox-close');
+
+      document.querySelectorAll('.g-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const img = item.querySelector('img');
+          if (!img) return;
+          lbImg.src = img.src;
+          lb.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      function closeLb() {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+        lbImg.src = '';
+      }
+
+      lbClose.addEventListener('click', closeLb);
+      lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+    })();
   </script>
+
+  <!-- Lightbox -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <span id="lightbox-close" aria-label="Close">&times;</span>
+    <img id="lightbox-img" src="" alt="Gallery photo" />
+  </div>
 
 </body>
 </html>
