@@ -15,3 +15,8 @@ Artist_Manager_Playbook.md
 
 # Temp screenshots
 Screenshot*.png
+
+# Organized subfolders — local only
+_screenshots/
+_originals/
+_documents/
