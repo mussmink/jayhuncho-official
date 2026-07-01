@@ -12,7 +12,7 @@
                  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
                  font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com;
                  img-src 'self' data: https://is1-ssl.mzstatic.com;
-                 connect-src 'none';" />
+                 connect-src https://api.web3forms.com;" />
 
   <!-- ============================================================
     JAYHUNCHO WEBSITE — PLACEHOLDER REFERENCE
@@ -1808,9 +1808,13 @@
         </div>
       </div>
 
-      <!-- [FORM_ENDPOINT] — replace action="#FORM_ENDPOINT"
-           Options: https://formspree.io (free), Netlify Forms (add netlify attribute) -->
-      <form class="contact-form" action="#FORM_ENDPOINT" method="POST" onsubmit="handleContact(event)">
+      <form class="contact-form" id="contact-form" onsubmit="handleContact(event)">
+
+        <!-- Web3Forms — replace YOUR_ACCESS_KEY with key from web3forms.com -->
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY" />
+        <input type="hidden" name="subject" value="New Jayhuncho Inquiry" />
+        <input type="hidden" name="from_name" value="Jayhuncho Official Site" />
+        <input type="checkbox" name="botcheck" style="display:none;" />
 
         <div class="form-row">
           <div class="form-group">
@@ -1825,13 +1829,13 @@
 
         <div class="form-group">
           <label for="c-subject">Subject</label>
-          <select id="c-subject" name="subject" required>
+          <select id="c-subject" name="inquiry_type" required>
             <option value="" disabled selected>Select a topic</option>
-            <option value="booking">Booking</option>
-            <option value="feature">Feature / Collab</option>
-            <option value="press">Press / Media</option>
-            <option value="brand">Brand Deal / Sponsorship</option>
-            <option value="other">Other</option>
+            <option value="Booking">Booking</option>
+            <option value="Feature / Collab">Feature / Collab</option>
+            <option value="Press / Media">Press / Media</option>
+            <option value="Brand Deal / Sponsorship">Brand Deal / Sponsorship</option>
+            <option value="Other">Other</option>
           </select>
         </div>
 
@@ -1840,7 +1844,9 @@
           <textarea id="c-msg" name="message" placeholder="Tell us what's on your mind..." required></textarea>
         </div>
 
-        <button type="submit" class="btn btn-gold" style="align-self:flex-start;">
+        <div id="contact-result" style="display:none; padding:.75rem 1rem; border-radius:4px; font-family:var(--heading); font-size:.85rem; letter-spacing:1px;"></div>
+
+        <button type="submit" class="btn btn-gold" id="contact-btn" style="align-self:flex-start;">
           Send Message &nbsp;<i class="fa-solid fa-paper-plane"></i>
         </button>
 
@@ -1962,20 +1968,42 @@
     }
 
     // ── Contact form ──
-    function handleContact(e) {
-      // Remove this preventDefault once you have a real form endpoint
+    async function handleContact(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('button[type="submit"]');
-      const orig = btn.innerHTML;
-      btn.innerHTML = '<i class="fa-solid fa-check"></i> &nbsp;Sent!';
-      btn.style.background = '#2ecc71';
-      btn.style.color = '#fff';
-      setTimeout(() => {
-        btn.innerHTML = orig;
-        btn.style.background = '';
-        btn.style.color = '';
-      }, 3000);
-      // TODO: set the form action to your real endpoint (Formspree, Netlify, etc.)
+      const form   = document.getElementById('contact-form');
+      const btn    = document.getElementById('contact-btn');
+      const result = document.getElementById('contact-result');
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> &nbsp;Sending…';
+
+      try {
+        const res  = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: new FormData(form)
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          result.style.display      = 'block';
+          result.style.background   = 'rgba(46,204,113,.15)';
+          result.style.border       = '1px solid rgba(46,204,113,.4)';
+          result.style.color        = '#2ecc71';
+          result.textContent        = 'Message sent. We\'ll be in touch.';
+          form.reset();
+          btn.innerHTML = '<i class="fa-solid fa-check"></i> &nbsp;Sent!';
+        } else {
+          throw new Error('Send failed');
+        }
+      } catch {
+        result.style.display    = 'block';
+        result.style.background = 'rgba(231,76,60,.15)';
+        result.style.border     = '1px solid rgba(231,76,60,.4)';
+        result.style.color      = '#e74c3c';
+        result.textContent      = 'Something went wrong. Email us directly.';
+        btn.disabled  = false;
+        btn.innerHTML = 'Send Message &nbsp;<i class="fa-solid fa-paper-plane"></i>';
+      }
     }
 
     // ── Fade-in on scroll (IntersectionObserver) ──
