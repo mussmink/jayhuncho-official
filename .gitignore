@@ -9,6 +9,11 @@ Thumbs.db
 # Microsoft Office temp files
 ~$*
 
+# Environment / secrets — never commit these
+.env
+.env.*
+*.env
+
 # Business documents — keep these off GitHub
 *.docx
 Artist_Manager_Playbook.md
