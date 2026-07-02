@@ -1675,10 +1675,13 @@
       <div class="divider" style="margin: .9rem auto 2rem;"></div>
       <p>Be the first to know about new music, merch drops, shows, and exclusives.</p>
 
-      <!-- Connect this to Mailchimp, Klaviyo, or ConvertKit for real email capture -->
-      <form class="mail-form" onsubmit="handleMailSubmit(event)">
-        <input type="email" placeholder="Your email address" required aria-label="Email" />
-        <button type="submit">Subscribe</button>
+      <form class="mail-form" action="https://gmail.us13.list-manage.com/subscribe/post?u=41d83a2ca19cc0040537151e4&amp;id=64dbaa2143&amp;f_id=001751eaf0" method="post" target="_blank" novalidate>
+        <input type="email" name="EMAIL" placeholder="Your email address" required aria-label="Email" />
+        <!-- Mailchimp bot protection — do not remove -->
+        <div aria-hidden="true" style="position:absolute;left:-5000px;">
+          <input type="text" name="b_41d83a2ca19cc0040537151e4_64dbaa2143" tabindex="-1" value="">
+        </div>
+        <button type="submit" name="subscribe">Subscribe</button>
       </form>
       <p class="mail-note">No spam. Unsubscribe anytime.</p>
     </div>
@@ -1871,22 +1874,6 @@
     });
 
     // ── Mailing list form ──
-    function handleMailSubmit(e) {
-      e.preventDefault();
-      const btn   = e.target.querySelector('button');
-      const input = e.target.querySelector('input');
-      btn.textContent = 'Thank you!';
-      btn.style.background = '#2ecc71';
-      btn.style.color = '#fff';
-      input.value = '';
-      setTimeout(() => {
-        btn.textContent = 'Subscribe';
-        btn.style.background = '';
-        btn.style.color = '';
-      }, 3000);
-      // TODO: connect to Mailchimp / Klaviyo API or form endpoint
-    }
-
     // ── Contact form ──
     async function handleContact(e) {
       e.preventDefault();
